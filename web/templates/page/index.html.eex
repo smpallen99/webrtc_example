@@ -1,6 +1,6 @@
 <div id="login-page" class="page">
   <h2>Login As</h2>
-  <input type="text" id="username" />
+  <input type="text" id="username" value="<%= @name %>" />
   <button id="login">Login</button>
 </div>
 

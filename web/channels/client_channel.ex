@@ -64,8 +64,7 @@ defmodule WebrtcExample.ClientChannel do
   end
   def handle_in("client:webrtc-" <> nm, %{"type" => "candidate", 
       "name" => name, "candidate" => candidate} = msg, socket) do
-    Logger.debug "Sending candiate to " <> name
-    Logger.debug "candidate: #{inspect candidate}"
+    Logger.debug "Sending candidate to #{name}: #{inspect candidate}"
     do_broadcast name, "candidate", %{candidate: msg["candidate"]}
     {:noreply, socket}
   end

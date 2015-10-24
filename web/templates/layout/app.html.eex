@@ -28,5 +28,13 @@
 
     </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= if @name != "" do %>
+      <script>
+      $(document).ready(function() {
+        console.log('testing...');
+        $('#login').click();
+      })
+      </script>
+    <% end %>
   </body>
 </html>

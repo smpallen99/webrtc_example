@@ -105,8 +105,11 @@ $(document).ready(function() {
           answer: answer
         });
       }, function (error) {
+        send({
+          type: "error",
+          message: "onOffer error: " + error
+        })
         console.log("onOffer error", error)
-        alert("An error has occurred" + error);
       });
     }
 
@@ -150,12 +153,24 @@ $(document).ready(function() {
           if (hasRTCPeerConnection()) {
             setupPeerConnection(stream);
           } else {
+            send({
+              type: "error",
+              message: "Sorry, your browser does not support WebRTC."
+            })
             alert("Sorry, your browser does not support WebRTC.");
           }
         }, function (error) {
+            send({
+              type: "error",
+              message: "Sorry, your browser does not support WebRTC."
+            })
           console.log(error);
         });
       } else {
+        send({
+          type: "error",
+          message: "Sorry, your browser does not support WebRTC."
+        })
         alert("Sorry, your browser does not support WebRTC.");
       }
     }
@@ -195,7 +210,11 @@ $(document).ready(function() {
         });
         yourConnection.setLocalDescription(offer);
       }, function (error) {
-        alert("An error has occurred.");
+        send({
+          type: "error",
+          message: "startPeerConnection error" + error
+        })
+        console.log("An error has occurred.");
       });
     };
   });
