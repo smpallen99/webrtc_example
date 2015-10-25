@@ -1,0 +1,12 @@
+<div id="login-page" class="page">
+  <h2>Login As</h2>
+  <input type="text" id="username" />
+  <button id="login">Login</button>
+</div>
+
+<div id="call-page" class="page">
+  <audio id="theirs" autoplay></audio>
+  <input type="text" id="their-username" />
+  <button id="call">Call</button>
+  <button id="hang-up">Hang Up</button>
+</div>
