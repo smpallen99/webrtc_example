@@ -1,5 +1,5 @@
-defmodule Webrtc.ErrorView do
-  use Webrtc.Web, :view
+defmodule WebrtcExample.ErrorView do
+  use WebrtcExample.Web, :view
 
   def render("404.html", _assigns) do
     "Page not found"

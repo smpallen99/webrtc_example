@@ -1,14 +1,14 @@
-defmodule Webrtc.Endpoint do
-  use Phoenix.Endpoint, otp_app: :webrtc
+defmodule WebrtcExample.Endpoint do
+  use Phoenix.Endpoint, otp_app: :webrtc_example
 
-  socket "/socket", Webrtc.UserSocket
+  socket "/socket", WebrtcExample.UserSocket
 
   # Serve at "/" the static files from "priv/static" directory.
   #
   # You should set gzip to true if you are running phoenix.digest
   # when deploying your static files in production.
   plug Plug.Static,
-    at: "/", from: :webrtc, gzip: false,
+    at: "/", from: :webrtc_example, gzip: false,
     only: ~w(css fonts images js favicon.ico robots.txt)
 
   # Code reloading can be explicitly enabled under the
@@ -35,5 +35,5 @@ defmodule Webrtc.Endpoint do
     key: "_webrtc_key",
     signing_salt: "Uxs5rlxB"
 
-  plug Webrtc.Router
+  plug WebrtcExample.Router
 end

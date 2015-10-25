@@ -1,3 +1,3 @@
-defmodule Webrtc.LayoutView do
-  use Webrtc.Web, :view
+defmodule WebrtcExample.LayoutView do
+  use WebrtcExample.Web, :view
 end

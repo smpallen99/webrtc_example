@@ -1,5 +1,5 @@
-defmodule Webrtc.Router do
-  use Webrtc.Web, :router
+defmodule WebrtcExample.Router do
+  use WebrtcExample.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,7 +13,7 @@ defmodule Webrtc.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", Webrtc do
+  scope "/", WebrtcExample do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index

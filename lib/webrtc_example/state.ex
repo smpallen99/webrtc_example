@@ -1,8 +1,7 @@
-defmodule Webrtc.State do
+defmodule WebrtcExample.State do
   require Logger
 
   def start_link do
-    Logger.warn "State.start_link"
     Agent.start_link(fn -> HashDict.new end, name: __MODULE__)
   end
 

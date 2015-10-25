@@ -7,14 +7,11 @@ let socket = new Socket("/socket")
 
 
 $(document).ready(function() {
-  var $input = $(".mscs_btn")
-  var mac = $('#mac-address').attr('data-mac')
 
   var localStream;
   var sdpConstraints = {video: false, audio: true};
 
   socket.connect()
-
 
   var loginPage = document.querySelector('#login-page'),
       usernameInput = document.querySelector('#username'),

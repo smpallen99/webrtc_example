@@ -1,7 +1,7 @@
-defmodule Webrtc.ClientChannel do
+defmodule WebrtcExample.ClientChannel do
   use Phoenix.Channel
   require Logger
-  alias Webrtc.State
+  alias WebrtcExample.State
 
   def join("webrtc:client-" <> name, params, socket) do
     Logger.debug "join: name: #{name}, params: #{inspect params}"
@@ -26,8 +26,11 @@ defmodule Webrtc.ClientChannel do
   ##########
   # Incoming message handlers
 
-  def handle_in("client:webrtc-" <> nm, %{"type" => "offer", "name" => name} = msg, socket) do
+  def handle_in("client:webrtc-" <> nm, %{"type" => "offer", "name" => name, "offer" => offer} = msg, socket) do
     Logger.debug "Sending offer to #{name}"
+    String.split(offer["sdp"], "\r\n")
+    |> Enum.each(&(Logger.debug &1))
+    # Logger.debug "offer #{name} #{inspect offer}"
     case State.get nm do
       nil -> :ok
       data -> 
@@ -36,8 +39,11 @@ defmodule Webrtc.ClientChannel do
     end
     {:noreply, socket}
   end
-  def handle_in("client:webrtc-" <> nm, %{"type" => "answer", "name" => name} = msg, socket) do
+  def handle_in("client:webrtc-" <> nm, %{"type" => "answer", "name" => name, "answer" => answer} = msg, socket) do
     Logger.debug "Sending answer to #{name}"
+    # Logger.debug "answer #{name} #{inspect answer}"
+    String.split(answer["sdp"], "\r\n")
+    |> Enum.each(&(Logger.debug &1))
     case State.get nm do
       nil -> :ok
       data -> 
@@ -56,8 +62,10 @@ defmodule Webrtc.ClientChannel do
     end
     {:noreply, socket}
   end
-  def handle_in("client:webrtc-" <> nm, %{"type" => "candidate", "name" => name} = msg, socket) do
+  def handle_in("client:webrtc-" <> nm, %{"type" => "candidate", 
+      "name" => name, "candidate" => candidate} = msg, socket) do
     Logger.debug "Sending candiate to " <> name
+    Logger.debug "candidate: #{inspect candidate}"
     do_broadcast name, "candidate", %{candidate: msg["candidate"]}
     {:noreply, socket}
   end
@@ -73,6 +81,6 @@ defmodule Webrtc.ClientChannel do
   end
 
   defp do_broadcast(name, message, data) do
-    Webrtc.Endpoint.broadcast "webrtc:client-" <> name, "webrtc:" <> message, data
+    WebrtcExample.Endpoint.broadcast "webrtc:client-" <> name, "webrtc:" <> message, data
   end
 end

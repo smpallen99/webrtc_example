@@ -1,5 +1,5 @@
-defmodule Webrtc.PageController do
-  use Webrtc.Web, :controller
+defmodule WebrtcExample.PageController do
+  use WebrtcExample.Web, :controller
 
   def index(conn, _params) do
     render conn, "index.html"

@@ -1,12 +1,12 @@
-defmodule Webrtc.Web do
+defmodule WebrtcExample.Web do
   @moduledoc """
   A module that keeps using definitions for controllers,
   views and so on.
 
   This can be used in your application as:
 
-      use Webrtc.Web, :controller
-      use Webrtc.Web, :view
+      use WebrtcExample.Web, :controller
+      use WebrtcExample.Web, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -29,11 +29,11 @@ defmodule Webrtc.Web do
     quote do
       use Phoenix.Controller
 
-      alias Webrtc.Repo
+      alias WebrtcExample.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 1, from: 2]
 
-      import Webrtc.Router.Helpers
+      import WebrtcExample.Router.Helpers
     end
   end
 
@@ -47,7 +47,7 @@ defmodule Webrtc.Web do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import Webrtc.Router.Helpers
+      import WebrtcExample.Router.Helpers
     end
   end
 
@@ -61,7 +61,7 @@ defmodule Webrtc.Web do
     quote do
       use Phoenix.Channel
 
-      alias Webrtc.Repo
+      alias WebrtcExample.Repo
       import Ecto.Model
       import Ecto.Query, only: [from: 1, from: 2]
     end

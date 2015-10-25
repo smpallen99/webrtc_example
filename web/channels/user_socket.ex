@@ -1,9 +1,9 @@
-defmodule Webrtc.UserSocket do
+defmodule WebrtcExample.UserSocket do
   use Phoenix.Socket
 
   ## Channels
   # channel "rooms:*", Webrtc.RoomChannel
-  channel "webrtc:*", Webrtc.ClientChannel
+  channel "webrtc:*", WebrtcExample.ClientChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

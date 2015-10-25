@@ -1,8 +1,8 @@
-defmodule Webrtc.Mixfile do
+defmodule WebrtcExample.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :webrtc,
+    [app: :webrtc_example,
      version: "0.0.1",
      elixir: "~> 1.0",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -17,7 +17,7 @@ defmodule Webrtc.Mixfile do
   #
   # Type `mix help compile.app` for more information.
   def application do
-    [mod: {Webrtc, []},
+    [mod: {WebrtcExample, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger,
                     :phoenix_ecto, :mariaex]]
   end

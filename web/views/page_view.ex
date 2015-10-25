@@ -1,3 +1,3 @@
-defmodule Webrtc.PageView do
-  use Webrtc.Web, :view
+defmodule WebrtcExample.PageView do
+  use WebrtcExample.Web, :view
 end
